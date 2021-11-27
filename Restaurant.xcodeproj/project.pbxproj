@@ -19,6 +19,7 @@
 		B3D959A3274C129B0067B0BC /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D959A2274C129B0067B0BC /* MenuItem.swift */; };
 		B3D959A5274E42A50067B0BC /* IntermediaryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D959A4274E42A50067B0BC /* IntermediaryModels.swift */; };
 		B3D959A7274E46B00067B0BC /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D959A6274E46B00067B0BC /* Order.swift */; };
+		B3D959AB274E53090067B0BC /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D959AA274E53090067B0BC /* MenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B3D959A2274C129B0067B0BC /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		B3D959A4274E42A50067B0BC /* IntermediaryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediaryModels.swift; sourceTree = "<group>"; };
 		B3D959A6274E46B00067B0BC /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		B3D959AA274E53090067B0BC /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				B35173BF274A460600B7E2B7 /* Main.storyboard */,
 				B3D959A8274E4BD50067B0BC /* Models */,
 				B3D959A9274E4C1F0067B0BC /* ViewControllers */,
+				B3D959AC274E531A0067B0BC /* ModelControllers */,
 				B35173C2274A460700B7E2B7 /* Assets.xcassets */,
 				B35173C4274A460700B7E2B7 /* LaunchScreen.storyboard */,
 				B35173C7274A460700B7E2B7 /* Info.plist */,
@@ -99,6 +102,14 @@
 				B3D9599E274C10380067B0BC /* OrderTableViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B3D959AC274E531A0067B0BC /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B3D959AA274E53090067B0BC /* MenuController.swift */,
+			);
+			path = ModelControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D959AB274E53090067B0BC /* MenuController.swift in Sources */,
 				B35173BA274A460600B7E2B7 /* AppDelegate.swift in Sources */,
 				B3D959A7274E46B00067B0BC /* Order.swift in Sources */,
 				B3D9599D274C102E0067B0BC /* MenuTableViewController.swift in Sources */,
