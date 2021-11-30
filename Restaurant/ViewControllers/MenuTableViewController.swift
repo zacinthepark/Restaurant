@@ -8,6 +8,10 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+    
+    //Since this vc will never be displayed without category data, we can make the property an implicitly unwrapped optional
+    var category: String!
+    var menuItems = [MenuItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
