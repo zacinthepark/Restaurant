@@ -8,6 +8,8 @@
 import Foundation
 
 class MenuController {
+    static let shared = MenuController()
+    
     let baseURL = URL(string: "http://localhost:8090/")!
     
     //path에 해당하는 부분은 appendingPathComponent로 구현
