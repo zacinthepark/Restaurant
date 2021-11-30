@@ -104,10 +104,71 @@
                     <view key="view" contentMode="scaleToFill" id="enz-4C-CCW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="r3e-v3-9r8">
+                                <rect key="frame" x="0.0" y="104" width="414" height="184"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-4h-kme">
+                                <rect key="frame" x="0.0" y="296" width="326" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$27.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zo-1u-DqX">
+                                <rect key="frame" x="334" y="296" width="80" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Cif-08-lve"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-jh-CeH">
+                                <rect key="frame" x="0.0" y="328" width="414" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QyI-Fb-TSp">
+                                <rect key="frame" x="0.0" y="649" width="414" height="30"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Add To Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addToOrderButtonTapped:" destination="96j-jl-uNI" eventType="touchUpInside" id="3kn-fz-8tI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="POY-X9-gsw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="r3e-v3-9r8" firstAttribute="height" secondItem="enz-4C-CCW" secondAttribute="height" multiplier="0.25" id="3Un-Lw-A9W"/>
+                            <constraint firstItem="r3e-v3-9r8" firstAttribute="top" secondItem="POY-X9-gsw" secondAttribute="top" constant="8" id="3dc-4A-5qw"/>
+                            <constraint firstItem="r3e-v3-9r8" firstAttribute="leading" secondItem="POY-X9-gsw" secondAttribute="leading" id="3xY-Ku-rAi"/>
+                            <constraint firstItem="QyI-Fb-TSp" firstAttribute="leading" secondItem="POY-X9-gsw" secondAttribute="leading" id="8Hi-9l-lSy"/>
+                            <constraint firstItem="l9b-jh-CeH" firstAttribute="top" secondItem="Rog-4h-kme" secondAttribute="bottom" constant="8" id="9M5-18-QCi"/>
+                            <constraint firstItem="l9b-jh-CeH" firstAttribute="leading" secondItem="POY-X9-gsw" secondAttribute="leading" id="HKf-X1-vmb"/>
+                            <constraint firstItem="POY-X9-gsw" firstAttribute="bottom" secondItem="QyI-Fb-TSp" secondAttribute="bottom" constant="8" id="J3v-Rz-Cav"/>
+                            <constraint firstItem="Rog-4h-kme" firstAttribute="leading" secondItem="POY-X9-gsw" secondAttribute="leading" id="Jpb-XP-0V9"/>
+                            <constraint firstItem="POY-X9-gsw" firstAttribute="trailing" secondItem="l9b-jh-CeH" secondAttribute="trailing" id="Uxh-gK-j6f"/>
+                            <constraint firstItem="POY-X9-gsw" firstAttribute="trailing" secondItem="6zo-1u-DqX" secondAttribute="trailing" id="YBT-JE-Qst"/>
+                            <constraint firstItem="Rog-4h-kme" firstAttribute="top" secondItem="r3e-v3-9r8" secondAttribute="bottom" constant="8" id="gde-im-GH2"/>
+                            <constraint firstItem="6zo-1u-DqX" firstAttribute="leading" secondItem="Rog-4h-kme" secondAttribute="trailing" constant="8" id="nK2-xE-c52"/>
+                            <constraint firstItem="POY-X9-gsw" firstAttribute="trailing" secondItem="r3e-v3-9r8" secondAttribute="trailing" id="pcB-qY-1cW"/>
+                            <constraint firstItem="6zo-1u-DqX" firstAttribute="top" secondItem="r3e-v3-9r8" secondAttribute="bottom" constant="8" id="rkZ-t3-u35"/>
+                            <constraint firstItem="POY-X9-gsw" firstAttribute="trailing" secondItem="QyI-Fb-TSp" secondAttribute="trailing" id="tiI-Xl-ipA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xyv-J0-DCm"/>
+                    <connections>
+                        <outlet property="addToOrderButton" destination="QyI-Fb-TSp" id="0oh-cB-HJm"/>
+                        <outlet property="detailTextLabel" destination="l9b-jh-CeH" id="GKH-4X-Bv6"/>
+                        <outlet property="imageView" destination="r3e-v3-9r8" id="Z1v-BT-tMg"/>
+                        <outlet property="priceLabel" destination="6zo-1u-DqX" id="6s4-6Q-TP2"/>
+                        <outlet property="titleLabel" destination="Rog-4h-kme" id="2VA-GQ-o5e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sE-ZZ-yxw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -197,8 +258,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="placeholder" width="100" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
