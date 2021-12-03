@@ -9,6 +9,14 @@ import Foundation
 
 class MenuController {
     static let shared = MenuController()
+    //Name the notification for order updates
+    static let orderUpdateNotification = Notification.Name("MenuController.orderUpdated")
+    //Order 항목이 바뀔 때마다 orderUpdateNotification이라는 Notification을 NotificationCenter에 post
+    var order = Order() {
+        didSet {
+            NotificationCenter.default.post(name: MenuController.orderUpdateNotification, object: nil)
+        }
+    }
     
     let baseURL = URL(string: "http://localhost:8090/")!
     
