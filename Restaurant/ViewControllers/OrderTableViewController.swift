@@ -8,6 +8,8 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
+    
+    var orderMinutes = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,15 +61,38 @@ class OrderTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ConfirmationSegue" {
+            let orderConfirmationViewController = segue.destination as! OrderConfirmationViewController
+            orderConfirmationViewController.minutes = orderMinutes
+        }
     }
-    */
+    
+    @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
+        if segue.identifier == "DismissConfirmation" {
+            MenuController.shared.order.menuItems.removeAll()
+        }
+    }
+    
+    @IBAction func submitTapped(_ sender: Any) {
+        let orderTotal = MenuController.shared.order.menuItems.reduce(0.0) { (result, menuItem) -> Double in
+            return result + menuItem.price
+        }
+        let formattedOrder = String(format: "$%.2f", orderTotal)
+        
+        let alert = UIAlertController(title: "Confirm Order", message: "You are about to submit your order with a total of \(formattedOrder)", preferredStyle: .alert)
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { (action) in
+            self.uploadOrder()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(submitAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 
 }
 
@@ -77,6 +102,18 @@ extension OrderTableViewController {
         let menuItem = MenuController.shared.order.menuItems[indexPath.row]
         cell.textLabel?.text = menuItem.name
         cell.detailTextLabel?.text = String(format: "$%.2f", menuItem.price)
+    }
+    
+    func uploadOrder() {
+        let menuIDs = MenuController.shared.order.menuItems.map { $0.id }
+        MenuController.shared.submitOrder(forMenuIDs: menuIDs) { (minutes) in
+            DispatchQueue.main.async {
+                if let minutes = minutes {
+                    self.orderMinutes = minutes
+                    self.performSegue(withIdentifier: "ConfirmationSegue", sender: nil)
+                }
+            }
+        }
     }
     
 }
