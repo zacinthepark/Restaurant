@@ -36,7 +36,7 @@ extension SceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         let temporaryDirectory = NSTemporaryDirectory()
-        let urlCache = URLCache(memoryCapacity: 25_000_000, diskCapacity: 50_000_000, directory: temporaryDirectory)
+        let urlCache = URLCache(memoryCapacity: 25_000_000, diskCapacity: 50_000_000, diskPath: temporaryDirectory)
         URLCache.shared = urlCache
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateOrderBadge), name: MenuController.orderUpdateNotification, object: nil)
