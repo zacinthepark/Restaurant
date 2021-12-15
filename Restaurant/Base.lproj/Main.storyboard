@@ -79,7 +79,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="placeholder" id="kdi-He-5df">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="placeholder" id="kdi-He-5df">
                                             <rect key="frame" x="20" y="0.0" width="43.666666666666657" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -205,7 +205,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="placeholder" id="bO6-UU-AkP">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="placeholder" id="bO6-UU-AkP">
                                             <rect key="frame" x="20" y="0.0" width="44" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -226,7 +226,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="ydB-H0-qHT" kind="presentation" identifier="ConfirmationSegue" id="Dus-fv-7Pw"/>
+                        <segue destination="ydB-H0-qHT" kind="presentation" identifier="ConfirmationSegue" id="Vfq-9m-gI1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tny-EW-4qb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -257,7 +257,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CYf-o3-qRw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="k1L-Kr-ue0" firstAttribute="top" secondItem="V1P-mN-2zo" secondAttribute="bottom" constant="8" id="6YX-4S-prm"/>
                             <constraint firstItem="V1P-mN-2zo" firstAttribute="leading" secondItem="CYf-o3-qRw" secondAttribute="leading" id="Fdg-Dv-Kuq"/>

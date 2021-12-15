@@ -18,10 +18,8 @@ class OrderTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(tableView!, selector: #selector(UITableView.reloadData), name: MenuController.orderUpdateNotification, object: nil)
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,29 +41,13 @@ class OrderTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             MenuController.shared.order.menuItems.remove(at: indexPath.row)
+            //tableview reload, badge update는 Notification center에 의해 수행됨
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ConfirmationSegue" {
@@ -77,6 +59,7 @@ class OrderTableViewController: UITableViewController {
     @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
         if segue.identifier == "DismissConfirmation" {
             MenuController.shared.order.menuItems.removeAll()
+            //tableview reload, badge update는 Notification center에 의해 수행됨
         }
     }
     
@@ -87,13 +70,10 @@ class OrderTableViewController: UITableViewController {
         let formattedOrder = String(format: "$%.2f", orderTotal)
         
         let alert = UIAlertController(title: "Confirm Order", message: "You are about to submit your order with a total of \(formattedOrder)", preferredStyle: .alert)
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { (action) in
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { action in
             self.uploadOrder()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(submitAction)
-        alert.addAction(cancelAction)
-        
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     

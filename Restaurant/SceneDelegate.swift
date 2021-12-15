@@ -41,6 +41,7 @@ extension SceneDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateOrderBadge), name: MenuController.orderUpdateNotification, object: nil)
         orderTabBarItem = (self.window!.rootViewController as! UITabBarController).viewControllers![1].tabBarItem
+        updateOrderBadge()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
