@@ -55,13 +55,13 @@ class MenuController {
     }
     
     //menuIDs를 주면 해당 order의 시간을 돌려줌
-    func submitOrder(forMenuIDs menuIDs: [Int], completion: @escaping (Int?) -> Void) {
+    func submitOrder(forMenuIDs menuIds: [Int], completion: @escaping (Int?) -> Void) {
         let orderURL = baseURL.appendingPathComponent("order")
         var request = URLRequest(url: orderURL)
         request.httpMethod = "POST"
         //해당 request에서 "내가 보낼 데이터의 타입은 JSON이야"라고 알려주는 것, HTTP요청의 헤더 중 Content-Type의 value를 application/json으로 설정
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let data: [String: [Int]] = ["menuIDs": menuIDs]
+        let data: [String: [Int]] = ["menuIds": menuIds]
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(data)
         request.httpBody = jsonData
