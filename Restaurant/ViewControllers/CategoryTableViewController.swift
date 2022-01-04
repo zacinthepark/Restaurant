@@ -19,6 +19,24 @@ class CategoryTableViewController: UITableViewController {
         updateUI()
     }
 
+}
+
+extension CategoryTableViewController {
+    
+    @objc func updateUI() {
+        categories = MenuController.shared.categories
+        self.tableView.reloadData()
+    }
+    
+    func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
+        let categoryString = categories[indexPath.row]
+        cell.textLabel?.text = categoryString.capitalized
+    }
+    
+}
+
+extension CategoryTableViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -33,26 +51,16 @@ class CategoryTableViewController: UITableViewController {
         return cell
     }
 
+}
+
+extension CategoryTableViewController {
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MenuSegue" {
             let menuTableViewController = segue.destination as! MenuTableViewController
             let index = tableView.indexPathForSelectedRow!.row
             menuTableViewController.category = categories[index]
         }
-    }
-
-}
-
-extension CategoryTableViewController {
-    
-    @objc func updateUI() {
-        categories = MenuController.shared.categories
-        self.tableView.reloadData()
-    }
-    
-    func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
-        let categoryString = categories[indexPath.row]
-        cell.textLabel?.text = categoryString.capitalized
     }
     
 }
