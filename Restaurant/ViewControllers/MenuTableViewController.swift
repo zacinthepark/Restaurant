@@ -10,18 +10,15 @@ import UIKit
 class MenuTableViewController: UITableViewController {
     
     //Since this vc will never be displayed without category data, we can make the property an implicitly unwrapped optional
-    var category: String!
+    var category: String?
     var menuItems = [MenuItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = category.capitalized
-        MenuController.shared.fetchMenuItems(forCategory: category) { (menuItems) in
-            if let menuItems = menuItems {
-                self.updateUI(with: menuItems)
-            }
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: MenuController.menuDataUpdatedNotification, object: nil)
+        
+        updateUI()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,11 +51,12 @@ class MenuTableViewController: UITableViewController {
 
 extension MenuTableViewController {
     
-    func updateUI(with menuItems: [MenuItem]) {
-        DispatchQueue.main.async {
-            self.menuItems = menuItems
-            self.tableView.reloadData()
-        }
+    @objc func updateUI() {
+        guard let category = category else { return }
+        
+        title = category.capitalized
+        self.menuItems = MenuController.shared.items(forCategory: category) ?? []
+        self.tableView.reloadData()
     }
     
     func configure(_ cell: UITableViewCell, forItemAt indexPath: IndexPath) {
@@ -77,6 +75,25 @@ extension MenuTableViewController {
                 cell.setNeedsLayout()
             }
         }
+    }
+    
+}
+
+extension MenuTableViewController {
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with: coder)
+        
+        guard let category = category else { return }
+        
+        coder.encode(category, forKey: "category")
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        super.decodeRestorableState(with: coder)
+        
+        category = coder.decodeObject(forKey: "category") as? String
+        updateUI()
     }
     
 }
